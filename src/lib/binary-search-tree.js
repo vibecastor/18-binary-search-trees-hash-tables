@@ -1,6 +1,6 @@
 'use strict';
 
-class BinarySearchTree {
+export default class BinarySearchTree {
   constructor(root = null) {
     this.root = root;
   }
@@ -45,5 +45,3 @@ class BinarySearchTree {
     return this._find(rootNode.left, value);
   }
 }
-
-export default BinarySearchTree;

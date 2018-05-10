@@ -17,6 +17,7 @@ export default class KAryTree {
   _breadthFirstSearch(root) {
     const queue = new Queue();
     queue.enqueue(root);
+    console.log(this);
 
     let currentNode = null;
 
