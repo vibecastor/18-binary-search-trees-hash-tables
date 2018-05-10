@@ -32,10 +32,17 @@ export default class KAryTree {
   }
 
   find(value) {
-    const queue = new Queue();
-    queue.enqueue(root);
-    let foundValue = null;
+    if (!this.root) {
+      return null;
+    }
+    return this._find(this.root, value);
+  }
+
+  _find(rootNode, value) {
     console.log(this);
+    const queue = new Queue();
+    queue.enqueue(rootNode);
+    let foundValue = null;
 
     let currentNode = null;
 
