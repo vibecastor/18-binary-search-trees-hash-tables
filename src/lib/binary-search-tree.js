@@ -13,7 +13,7 @@ export default class BinarySearchTree {
     }
   }
 
-  _insert(rootNode, node) {
+  _insert(rootNode, nodeToInsert) {
     if (nodeToInsert.value < rootNode.value) {
       if (!rootNode.left) {
         rootNode.left = nodeToInsert;
@@ -21,7 +21,7 @@ export default class BinarySearchTree {
         this._insert(rootNode.left, nodeToInsert);
       }
     } else if (!rootNode.right) {
-      rootNode.right = noteToInsert;
+      rootNode.right = nodeToInsert;
     } else {
       this._insert(rootNode.right, nodeToInsert);
     }
@@ -38,7 +38,7 @@ export default class BinarySearchTree {
     if (!rootNode) {
       return null;
     } else if (rootNode.value === value) {
-      return rootNode;
+      return rootNode.value;
     } else if (rootNode.value < value) {
       return this._find(rootNode.right, value);
     }
