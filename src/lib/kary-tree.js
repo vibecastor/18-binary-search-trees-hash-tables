@@ -41,6 +41,9 @@ export default class KAryTree {
   _find(rootNode, value) {
     console.log(this);
     const queue = new Queue();
+    if (rootNode.value === value) {
+      return rootNode.value;
+    }
     queue.enqueue(rootNode);
     let foundValue = null;
 
@@ -56,5 +59,30 @@ export default class KAryTree {
       }
     }
     return foundValue;
+  }
+
+  toString() {
+    if (!this.root) {
+      return null;
+    }
+    return this._toString(this.root);
+  }
+
+  _toString(rootNode) {
+    console.log(this);
+    const queue = new Queue();
+    queue.enqueue(rootNode);
+    let printString = `${rootNode.value}`;
+
+    let currentNode = null;
+
+    while (!queue.isEmpty()) {
+      currentNode = queue.dequeue();
+      for (let i = 0; i < currentNode.children.length; i++) {
+        printString += currentNode.children[i].value;
+        queue.enqueue(currentNode.children[i]);
+      }
+    }
+    return printString;
   }
 }

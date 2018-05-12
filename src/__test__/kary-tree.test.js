@@ -13,13 +13,24 @@ describe('kary-tree.js tests', () => {
   one.children[1].appendChild(7);
   one.children[1].children[1].appendChild(8);
   const testTree = new KAryTree(one);
+  const falseTree = new KAryTree();
   describe('#find', () => {
     test('should return correct value in input', () => {
       expect(testTree.find(6)).toEqual(6);
       expect(testTree.find(2)).toEqual(2);
+      expect(testTree.find(1)).toEqual(1);
     });
     test('should return null if no value exists', () => {
       expect(testTree.find(13)).toBeNull();
+      expect(falseTree.find(1)).toBeNull();
+    });
+  });
+  describe('#toString', () => {
+    test('should return string in traversal order', () => {
+      expect(testTree.toString()).toEqual('12345678');
+    });
+    test('should return null if no tree is present', () => {
+      expect(falseTree.toString()).toBeNull();
     });
   });
 });
