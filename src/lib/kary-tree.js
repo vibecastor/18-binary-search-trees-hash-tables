@@ -1,6 +1,7 @@
 'use strict';
 
 import Queue from 'queue-fifo';
+import Stack from 'stack-lifo';
 
 export default class KAryTree {
   constructor(root) {
@@ -78,11 +79,43 @@ export default class KAryTree {
 
     while (!queue.isEmpty()) {
       currentNode = queue.dequeue();
+      // console.log(currentNode);
       for (let i = 0; i < currentNode.children.length; i++) {
         printString += currentNode.children[i].value;
         queue.enqueue(currentNode.children[i]);
       }
     }
     return printString;
+  }
+
+  toArray() {
+    if (!this.root) {
+      return null;
+    }
+    return this._toArray(this.root);
+  }
+
+  _toArray(rootNode) {
+    console.log(this);
+    const array = [];
+    const queue = new Queue();
+    const stack = new Stack();
+
+    queue.enqueue(rootNode);
+
+    let currentNode = null;
+
+    while (!queue.isEmpty()) {
+      currentNode = queue.dequeue();
+
+      for (let i = 0; i < currentNode.children.length; i++) {
+        queue.enqueue(currentNode.children[i]);
+      }
+      stack.push(currentNode.value);
+    }
+    while (!stack.isEmpty()) {
+      array.push(stack.pop());
+    }
+    return array;
   }
 }

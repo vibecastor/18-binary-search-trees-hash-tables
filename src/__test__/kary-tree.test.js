@@ -28,9 +28,18 @@ describe('kary-tree.js tests', () => {
   describe('#toString', () => {
     test('should return string in traversal order', () => {
       expect(testTree.toString()).toEqual('12345678');
+      expect(typeof testTree.toString()).toEqual('string');
     });
     test('should return null if no tree is present', () => {
       expect(falseTree.toString()).toBeNull();
+    });
+  });
+  describe('#toArray', () => {
+    test('should return array in depth-first order', () => {
+      expect(testTree.toArray()).toEqual([8, 7, 6, 5, 4, 3, 2, 1]);
+    });
+    test('should return null if no rootnode', () => {
+      expect(falseTree.toArray()).toBeNull();
     });
   });
 });
