@@ -30,6 +30,7 @@
     "http-errors": "^1.6.3",
     "mongoose": "^5.0.16",
     "queue-fifo": "^0.2.4",
+    "stack-lifo": "^0.1.5",
     "winston": "^3.0.0-rc4"
   }
 }
