@@ -44,4 +44,71 @@ export default class BinarySearchTree {
     }
     return this._find(rootNode.left, value);
   }
+
+  remove(value) {
+    if (!this.root) {
+      return null;
+    }
+    return this._remove(this.root, value);
+  }
+
+  _remove(rootNode, value) {
+    if (!rootNode) {
+      return null;
+    }
+    const baseValue = rootNode.value;
+    // let nodeToBeRemoved = null;
+    if (rootNode.value === value) {
+      // nodeToBeRemoved is a leaf
+      if (!rootNode.left && !rootNode.right) {
+        rootNode = null;
+        return null;
+      } else if (rootNode.left && rootNode.right) {
+        // nodetoberemoved has two children
+        if (baseValue <= rootNode.value) {     
+          rootNode = (this._findMinRight(rootNode.right));
+        } else {
+          rootNode = (this._findMinLeft(rootNode.left));
+        }
+        return rootNode.value;
+      } else if (rootNode.left || rootNode.right) {
+      // nodeToBeRemoved has one child
+        if (rootNode.left) {
+          rootNode = rootNode.left;
+        } else {
+          rootNode = rootNode.right;
+        }
+        return rootNode.value;
+      }
+    } else if (rootNode.value < value) {
+      return this._remove(rootNode.right, value);
+    } else {
+      return this._remove(rootNode.left, value);
+    }
+    return undefined;
+  }
+  
+  _findMinRight(rootNode) {
+    let successorNode = null;
+    while (rootNode.left) {
+      this._findMinRight(rootNode.left);
+    }
+    successorNode = rootNode;
+    if (rootNode.right) {
+      rootNode = rootNode.right;
+    } 
+    return successorNode;
+  }
+
+  _findMinLeft(rootNode) {
+    let successorNode = null;
+    while (rootNode.right) {
+      this._findMinLeft(rootNode.right);
+    }
+    successorNode = rootNode;
+    if (rootNode.left) {
+      rootNode = rootNode.left;
+    }
+    return successorNode;
+  }
 }
