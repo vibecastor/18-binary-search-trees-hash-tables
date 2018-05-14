@@ -89,14 +89,12 @@ export default class BinarySearchTree {
   }
   
   _findMinRight(rootNode) {
-    let successorNode = null;
-    while (rootNode.left) {
+    // if (rootNode.right) {
+    //   rootNode = rootNode.right;
+    const successorNode = rootNode;
+    if (rootNode.left) {
       this._findMinRight(rootNode.left);
     }
-    successorNode = rootNode;
-    if (rootNode.right) {
-      rootNode = rootNode.right;
-    } 
     return successorNode;
   }
 
