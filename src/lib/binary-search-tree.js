@@ -89,6 +89,7 @@ export default class BinarySearchTree {
   }
   
   _findMinRight(rootNode) {
+
     if (rootNode.left) {
       this._findMinRight(rootNode.left);
     }

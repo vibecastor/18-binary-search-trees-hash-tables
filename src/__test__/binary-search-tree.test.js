@@ -38,6 +38,7 @@ describe('#BinarySearchTree', () => {
       expect(badBst.find(1)).toBeNull();
     });
   });
+
   // describe('#remove', () => {
   //   test('remove function should return new rootnode value', () => {
   //     expect(rmvBst.remove(4)).toBeNull();
