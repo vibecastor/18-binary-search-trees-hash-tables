@@ -38,12 +38,12 @@ describe('#BinarySearchTree', () => {
       expect(badBst.find(1)).toBeNull();
     });
   });
-  describe('#remove', () => {
-    test('remove function should return new rootnode value', () => {
-      expect(rmvBst.remove(4)).toBeNull();
-      expect(rmvBst.remove(25)).toEqual(22);
-      rmvBst.insert(new Node(21));
-      expect(rmvBst.remove(20)).toEqual(21);
-    });
-  });
+  // describe('#remove', () => {
+  //   test('remove function should return new rootnode value', () => {
+  //     expect(rmvBst.remove(4)).toBeNull();
+  //     expect(rmvBst.remove(25)).toEqual(22);
+  //     rmvBst.insert(new Node(21));
+  //     expect(rmvBst.remove(20)).toEqual(21);
+  //   });
+  // });
 });
