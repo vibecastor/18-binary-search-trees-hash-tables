@@ -79,7 +79,6 @@ export default class KAryTree {
 
     while (!queue.isEmpty()) {
       currentNode = queue.dequeue();
-      // console.log(currentNode);
       for (let i = 0; i < currentNode.children.length; i++) {
         printString += currentNode.children[i].value;
         queue.enqueue(currentNode.children[i]);

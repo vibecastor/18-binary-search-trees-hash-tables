@@ -61,22 +61,22 @@ export default class BinarySearchTree {
     if (rootNode.value === value) {
       // nodeToBeRemoved is a leaf
       if (!rootNode.left && !rootNode.right) {
-        rootNode = null;
+        rootNode = null; /* eslint-disable-line */
         return null;
       } else if (rootNode.left && rootNode.right) {
         // nodetoberemoved has two children
         if (baseValue <= rootNode.value) {     
-          rootNode = (this._findMinRight(rootNode.right));
+          rootNode = (this._findMinRight(rootNode.right)); /* eslint-disable-line */
         } else {
-          rootNode = (this._findMinLeft(rootNode.left));
+          rootNode = (this._findMinLeft(rootNode.left)); /* eslint-disable-line */
         }
         return rootNode.value;
       } else if (rootNode.left || rootNode.right) {
       // nodeToBeRemoved has one child
         if (rootNode.left) {
-          rootNode = rootNode.left;
+          rootNode = rootNode.left; /* eslint-disable-line */
         } else {
-          rootNode = rootNode.right;
+          rootNode = rootNode.right; /* eslint-disable-line */
         }
         return rootNode.value;
       }
@@ -89,13 +89,19 @@ export default class BinarySearchTree {
   }
   
   _findMinRight(rootNode) {
-    // if (rootNode.right) {
-    //   rootNode = rootNode.right;
-    const successorNode = rootNode;
+
     if (rootNode.left) {
       this._findMinRight(rootNode.left);
     }
-    return successorNode;
+    const successorNode = rootNode;
+    if (rootNode.right) {      
+      rootNode = rootNode.right; /* eslint-disable-line */
+      return successorNode;
+    } else if (!rootNode.right) {
+      rootNode = null; /* eslint-disable-line */
+      return successorNode;
+    }
+    return undefined;
   }
 
   _findMinLeft(rootNode) {
@@ -105,7 +111,7 @@ export default class BinarySearchTree {
     }
     successorNode = rootNode;
     if (rootNode.left) {
-      rootNode = rootNode.left;
+      rootNode = rootNode.left; /* eslint-disable-line */
     }
     return successorNode;
   }
